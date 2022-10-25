@@ -66,8 +66,9 @@ public class ProprietarioDAOImpl implements ProprietarioDAO{
 		if(inizio<0)
 			throw new Exception("Problema valore in input");
 		
-		TypedQuery<Long> query=entityManager.createQuery("select count(distinct proprietario_id) from Automobile where annoimmatricolazione >=?1 ", Long.class);
+		TypedQuery<Long> query=entityManager.createQuery("select count(distinct targa) from Automobile where annoimmatricolazione >=?1 ", Long.class);
 		query.setParameter(1,inizio);
+		System.out.println(query.getSingleResult().intValue());
 		return query.getSingleResult().intValue();
 	}
 
